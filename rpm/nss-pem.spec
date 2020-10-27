@@ -1,5 +1,5 @@
 Name:       nss-pem
-Version:    1.0.5
+Version:    1.0.6
 Release:    1
 Summary:    PEM file reader for Network Security Services (NSS)
 
@@ -16,13 +16,13 @@ PEM file reader for Network Security Services (NSS), implemented as a PKCS#11
 module.
 
 %prep
-%setup -q -n %{name}-%{version}/%{name}
+%autosetup -n %{name}-%{version}/%{name}
 
 %build
 mkdir build
 cd build
 %cmake ../src
-make %{?_smp_mflags} VERBOSE=yes
+%make_build
 
 %install
 cd build
@@ -33,5 +33,6 @@ cd build
 %postun -p /sbin/ldconfig
 
 %files
+%defattr(-,root,root,-)
 %{_libdir}/libnsspem.so
 %license COPYING
