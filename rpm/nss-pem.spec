@@ -4,7 +4,7 @@ Release:    1
 Summary:    PEM file reader for Network Security Services (NSS)
 
 License:    MPLv1.1
-URL:        https://github.com/kdudka/nss-pem
+URL:        https://github.com/sailfishos/nss-pem
 Source0:    %{name}-%{version}.tar.bz2
 
 BuildRequires: cmake
