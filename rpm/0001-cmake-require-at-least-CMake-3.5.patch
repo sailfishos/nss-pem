@@ -1,0 +1,29 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Luk=C3=A1=C5=A1=20Zaoral?= <lzaoral@redhat.com>
+Date: Thu, 24 Apr 2025 09:20:54 +0200
+Subject: [PATCH] cmake: require at least CMake 3.5
+
+... to be compatible with CMake 4.0+ and also move the requirement to
+the top of CMakeLists.txt to fix the following warning:
+```
+CMake Warning (dev) at CMakeLists.txt:1 (project):
+  cmake_minimum_required() should be called prior to this top-level project()
+  call.  Please see the cmake-commands(7) manual for usage documentation of
+  both commands.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+```
+---
+ src/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 361ef750758cc3548038ecfccf7b95b2a1a2e948..58bc00d2f959967a9ffd36b3c02bd8f3a0516f3a 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,5 +1,5 @@
++cmake_minimum_required(VERSION 3.5)
+ project(libnsspem C)
+-cmake_minimum_required(VERSION 2.8.12)
+ enable_testing()
+ 
+ # use pkg-config to detect CFLAGS and LDFLAGS
